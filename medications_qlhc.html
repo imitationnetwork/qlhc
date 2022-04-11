@@ -1,0 +1,231 @@
+<html>
+
+<head>
+    <style>
+        p {
+            font-family: verdana, arial, helvetica;
+            font-size: 12px;
+            font-weight: normal;
+            padding: 5px;
+            margin: 3px;
+            background-color: rgb(225, 249, 255);
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            width: 75%;
+            border: 5px solid rgb(68, 64, 74);
+            margin: 5px;
+        }
+        
+        h1 {
+            color: rgb(52, 68, 52);
+        }
+        
+        h2 {
+            color: rgb(189, 181, 175);
+        }
+        
+        div {
+            margin: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>PLAN</h1>
+    <h2>MEDICATIONS</h2>
+    <div>
+        <input type="checkbox" id="orphenadrine" onchange="medications()" style="float:left">Orphenadrine<br>
+        <p id="orpheInfo" style="float:left; display: none"><b>INFORMATION: </b>60 mg sig: 1 im * 1/// injection will place on : right or left buttock superior external quadrant (Gluteus medio region) with sterile and disposable srynge and injector, intramuscular
+        </p><br>
+        <p id="orpheEffects" style="float:left; display: none"><b>ADVERSE EFFECTS: </b>Hallucinations, anaphylaxis (IM use), heat stroke, xerostomia, tachycardia, palpitations, urinary hesitancy/retention, blurred vision, mydriasis, IOP incr., weakness, nausea/vomiting, headache, dizziness, constipation,
+            drowsiness, hypersensitivity rxn, pruritus, agitation, tremor, gastric irritation, until death</p><br>
+        <input type="checkbox" id="ketorolac" onchange="medications()" style="float:left">Ketorolac<br>
+        <p id="ketoInfo" style="float:left; display: none"><b>INFORMATION: </b>60 mg sig: 1 im *1/// injection will place on : right or left buttock superior external quadrant (Gluteus medio region) with sterile and disposable srynge and injector, intramuscular</p><br>
+        <p id="ketoEffects" style="float:left; display: none"><b>ADVERSE EFFECTS: </b>Headache,nausea,abdominal pain,dyspepsia, dizziness,somnolence,constipation,diarrhea,edema, rash, ALT, AST elevated, fluid retention, tinnitus, injection site pain, HTN, pruritus, flatulence, diaphoresis,ecchymosis,photosensitivity,delayed
+            ovulation,GI bleeding, GI perforation/ulcer,ulcerative stomatitis,bleeding, severe,MI,stroke, thromboembolism,HTN,CHF,renal papillary necrosis,nephrotoxicity, hepatotoxicity,bronchospasm,anaphylactoid rxn,exfoliative dermatitis, Stevens-Johnson
+            syndrome,toxic epidermal necrolysis,anemia,blood dyscrasias, inflammatory bowel dz exacerbation,hyperkalemia, any data not recopilate until death</p><br>
+        <input type="checkbox" id="albuterol" onchange="medications()" style="float:left">Albuterol<br>
+        <p id="albuInfo" style="float:left; display: none"><b>INFORMATION: </b>0.83 % in 3 ml nss q 15 mins * 3 then add Ipatropium Bromide 0.2 % in 3 ml nss at second therapy///</p><br>
+        <p id="albuEffects" style="float:left; display: none"><b>ADVERSE EFFECTS: </b>bronchospasm, paradoxical, hypersensitivity rxn, HTN, hypotension, angina, cardiac arrest, arrhythmia, hypokalemia, hyperglycemia, nervousness, tremor, headache, tachycardia, palpitations, muscle cramps, nausea, dizziness,
+            insomnia, weakness</p><br>
+        <input type="checkbox" id="rocephin" onchange="medications()" style="float:left">Rocephin (Ceftriaxone)<br>
+        <p id="roceInfo" style="float:left; display: none"><b>INFORMATION: </b>1 gr im *1/// injection will place on : right or left buttock superior external quadrant (Gluteus medio region) with sterile and disposable srynge and injector, intramuscular</p><br>
+        <p id="roceEffects" style="float:left; display: none"><b>ADVERSE EFFECTS: </b>anaphylaxis,bronchospasm,Stevens-Johnson syndrome,toxic epidermal necrolysis,erythema multiforme,serum sickness,pneumonitis, hypersensitivity,neutropenia,leukopenia,anemia, hemolytic,thrombocytopenia,hypoprothrombinemia,agranulocytosis,superinfection,C.
+            difficile-assoc. diarrhea,colitis,biliary/gallbladder sludge,jaundice,pancreatitis,seizures,nephrolithiasis,lung/kidney Ca-ceftriaxone precipitate (neonates),local injection site rxn,eosinophilia,thrombocytosis,ALT, AST elevated,diarrhea,leukopenia,
+            any data not recopilate until death.</p><br>
+        <input type="checkbox" id="solumedrol" onchange="medications()" style="float:left">Solumedrol (Methylprednisolone)<br>
+        <p id="soluInfo" style="float:left; display: none"><b>INFORMATION: </b>125 mg sig: 1 im *1/// injection will place on : right or left buttock superior external quadrant (Gluteus medio region) with sterile and disposable syringe and injector, intramuscular</p><br>
+        <p id="soluEffects" style="float:left; display: none"><b>ADVERSE EFFECTS: </b>Anaphylaxis,adrenal insufficiency,steroid psychosis,steroid myopathy,Cushing syndrome,infection,diabetes mellitus,pseudotumor cerebri, ICP incr.,seizures,hypokalemic alkalosis,HTN,scleroderma renal crisis,CHF,pancreatitis,GI
+            perforation,PUD,exophthalmos,osteonecrosis,tendon <wbr>rupture,osteoporosis (long-term use),glaucoma (long-term use),cataracts (long-term use),immunosuppression (long-term use),Kaposi sarcoma (long-term use),withdrawal sx if abrupt D/C (high
+            dose or long-term use),growth suppression (long-term use, peds pts),Cushingoid appearance,hirsutism, weight gain,erythema,abdominal discomfort,appetite changes,emotional lability,rash/urticaria, nausea/vomiting,sodium and fluid retention,hypokalemia,BP
+            elevated,edema,diaphoresis,muscle atrophy,impaired wound healing (long-term use),<wbr>skin atrophy (long-term use),petechiae/ecchymosis.skin pigmentation abnormality,acne,headache,dizziness/vertigo,insomnia,depression,anxiety,glucose intolerance,Cushing
+            syndrome (long-term use)menstrual irregularities,IOP incr,any data not recopilate until death</p><br>
+        <input type="checkbox" id="diphenhydramine" onchange="medications()" style="float:left">Diphenhydramine<br>
+        <p id="diphenInfo" style="float:left; display: none"><b>INFORMATION: </b>Anaphylaxis,adrenal insufficiency,steroid psychosis,steroid myopathy,Cushing syndrome,infection,diabetes mellitus,pseudotumor cerebri, ICP incr.,seizures,hypokalemic alkalosis,HTN,scleroderma renal crisis,CHF,pancreatitis,GI
+            perforation,PUD,exophthalmos,osteonecrosis,tendon rupture,osteoporosis (long-term use),glaucoma (long-term use),cataracts (long-term use),immunosuppression (long-term use),Kaposi sarcoma (long-term use),withdrawal sx if abrupt D/C (high dose
+            or long-term use),growth suppression (long-term use, peds pts),Cushingoid appearance,hirsutism,weight gain,erythema,abdominal discomfort,appetite changes,emotional lability,rash/urticaria,nausea/vomiting,sodium and fluid retention,hypokalemia,BP
+            elevated,edema,diaphoresis,muscle atrophy,impaired wound healing (long-term use),skin atrophy (long-term use),petechiae/ecchymosis.skin pigmentation abnormality,acne,headache,dizziness/vertigo,insomnia,depression,anxiety,glucose intolerance,Cushing
+            syndrome (long-term use)menstrual irregularities,IOP incr,any data not recopilate until death</p><br>
+        <p id="diphenEffects" style="float:left; display: none"><b>ADVERSE EFFECTS: </b>anaphylaxis/anaphylactoid rxn, anemia, hemolytic, thrombocytopenia, agranulocytosis, leukopenia, pancytopenia, arrhythmias, seizures, toxic psychosis, labyrinthitis, acute, heat stroke, drowsiness, dizziness, impaired coordination,
+            headache, epigastric discomfort, thickened bronchial secretions, dry mucous membranes, CNS stimulation, paradoxical, constipation, dysuria, urinary retention, hypotension,blurred vision, diplopia, palpitations, tachycardia, photosensitivity,
+            diaphoresis, erectile dysfxn, until death</p><br>
+        <input type="checkbox" id="acetaminophen" onchange="medications()" style="float:left">Acetaminophen<br>
+        <p id="acetaInfo" style="float:left; display: none"><b>INFORMATION: </b>1 gr p.o</p><br>
+        <p id="acetaEffects" style="float:left; display: none"><b>ADVERSE EFFECTS: </b>hypersensitivity rxn,anaphylaxis/anaphylactoid rxn,skin rxn, severe,hepatotoxicity,renal tubular necrosis, acute,analgesic-assoc. nephropathy (chronic use),anemia,thrombocytopenia,nausea,rash,headache, any data not recopilate
+            until death</p><br>
+        <input type="checkbox" id="promethazine" onchange="medications()" style="float:left">Promethazine<br>
+        <p id="promeInfo" style="float:left; display: none"><b>INFORMATION: </b>50 mg sig: 1 im * 1/// injection will place on : right or left buttock superior external quadrant (Gluteus medio region) with sterile and disposable srynge and injector, intramuscular</p><br>
+        <p id="promeEffects" style="float:left; display: none"><b>ADVERSE EFFECTS: </b>extravasation/tissue damage (IV use > IM use),apnea,respiratory depression,seizures,leukopenia,thrombocytopenia,agranulocytosis,hallucinations,extrapyramidal sx,cholestatic jaundice,neuroleptic malignant syndrome,angioedema,bradycardia,tachycardia,heat
+            stroke,drowsiness,sedation,blurred vision,dizziness,confusion,disorientation,extrapyramidal sx,xerostomia,photosensitivity,dermatitis,rhinitis,urinary retention</p><br>
+        <input type="checkbox" id="clonidine" onchange="medications()" style="float:left">Clonidine<br>
+        <p id="clonInfo" style="float:left; display: none"><b>INFORMATION: </b>0.1 mg sig: 1 p.o stat check b/p in 1 hr</p><br>
+        <p id="clonEffects" style="float:left; display: none"><b>ADVERSE EFFECTS: </b>hypotension, severe, syncope, bradycardia, AV block, hypersensitivity rxn, angioedema, depression, withdrawal sx if abrupt D/C, rebound HTN if abrupt D/C, somnolence, headache, hypotension, abdominal pain, fatigue, nightmares,
+            nausea, URI, irritability, throat pain, insomnia, constipation, emotional disturbance, xerostomia, bradycardia. Dizziness, temperature elevated, diarrhea, otalgia, sexual dysfxn, withdrawal sx.</p><br>
+        <input type="checkbox" id="enalapril" onchange="medications()" style="float:left">Enalapril<br>
+        <p id="enaInfo" style="float:left; display: none"><b>INFORMATION: </b>5 m; sig: 1 p.o stat//</p><br>
+        <p id="enaEffects" style="float:left; display: none"><b>ADVERSE EFFECTS: </b>anaphylactoid rxn, angioedema, head/neck, angioedema, intestinal, Stevens-Johnson syndrome, toxic epidermal necrolysis, erythema multiforme, hypotension, severe, hyperkalemia, renal impairment/failure, hepatotoxicity, neutropenia,
+            agranulocytosis, pancreatitis, dizziness, hypotension, headache, fatigue, cough, hyperkalemia, BUN, Cr elevated, photosensitivity, hyperuricemia</p><br>
+        <input type="checkbox" id="loperamide" onchange="medications()" style="float:left">Loperamide<br>
+        <p id="lopeInfo" style="float:left; display: none"><b>INFORMATION: </b>2 p.o stat</p><br>
+        <p id="lopeEffects" style="float:left; display: none"><b>ADVERSE EFFECTS: </b>toxic megacolon, paralytic ileus, hypersensitivity rxn, angioedema, anaphylaxis/anaphylactoid rxn, toxic epidermal necrolysis, Stevens-Johnson syndrome, erythema multiforme, urinary retention, heat stroke, syncope, ventricular
+            tachycardia, abuse potential, constipation, nausea, abdominal cramps, dizziness, drowsiness</p><br>
+    </div>
+    <script type="application/javascript">
+        function medications() {
+            var orphenadrine = document.getElementById("orphenadrine");
+            var orpheInfo = document.getElementById("orpheInfo");
+            var orpheEffects = document.getElementById("orpheEffects");
+            if (orphenadrine.checked == true) {
+                orpheInfo.style.display = "block";
+                orpheEffects.style.display = "block";
+            } else {
+                orpheInfo.style.display = "none";
+                orpheEffects.style.display = "none";
+            }
+            var ketorolac = document.getElementById("ketorolac");
+            var ketoInfo = document.getElementById("ketoInfo");
+            var ketoEffects = document.getElementById("ketoEffects");
+            if (ketorolac.checked == true) {
+                ketoInfo.style.display = "block";
+                ketoEffects.style.display = "block";
+            } else {
+                ketoInfo.style.display = "none";
+                ketoEffects.style.display = "none";
+            }
+            var albuterol = document.getElementById("albuterol");
+            var albuInfo = document.getElementById("albuInfo");
+            var albuEffects = document.getElementById("albuEffects");
+            if (albuterol.checked == true) {
+                albuInfo.style.display = "block";
+                albuEffects.style.display = "block";
+            } else {
+                albuInfo.style.display = "none";
+                albuEffects.style.display = "none";
+            }
+            var rocephin = document.getElementById("rocephin");
+            var roceInfo = document.getElementById("roceInfo");
+            var roceEffects = document.getElementById("roceEffects");
+            if (rocephin.checked == true) {
+                roceInfo.style.display = "block";
+                roceEffects.style.display = "block";
+            } else {
+                roceInfo.style.display = "none";
+                roceEffects.style.display = "none";
+            }
+            var solumedrol = document.getElementById("solumedrol");
+            var soluInfo = document.getElementById("soluInfo");
+            var soluEffects = document.getElementById("soluEffects");
+            if (solumedrol.checked == true) {
+                soluInfo.style.display = "block";
+                soluEffects.style.display = "block";
+            } else {
+                soluInfo.style.display = "none";
+                soluEffects.style.display = "none";
+            }
+            var diphenhydramine = document.getElementById("diphenhydramine");
+            var diphenInfo = document.getElementById("diphenInfo");
+            var diphenEffects = document.getElementById("diphenEffects");
+            if (diphenhydramine.checked == true) {
+                diphenInfo.style.display = "block";
+                diphenEffects.style.display = "block";
+            } else {
+                diphenInfo.style.display = "none";
+                diphenEffects.style.display = "none";
+            }
+            var acetaminophen = document.getElementById("acetaminophen");
+            var acetaInfo = document.getElementById("acetaInfo");
+            var acetaEffects = document.getElementById("acetaEffects");
+            if (acetaminophen.checked == true) {
+                acetaInfo.style.display = "block";
+                acetaEffects.style.display = "block";
+            } else {
+                acetaInfo.style.display = "none";
+                acetaEffects.style.display = "none";
+            }
+            var promethazine = document.getElementById("promethazine");
+            var promeInfo = document.getElementById("promeInfo");
+            var promeEffects = document.getElementById("promeEffects");
+            if (promethazine.checked == true) {
+                promeInfo.style.display = "block";
+                promeEffects.style.display = "block";
+            } else {
+                promeInfo.style.display = "none";
+                promeEffects.style.display = "none";
+            }
+            var clonidine = document.getElementById("clonidine");
+            var clonInfo = document.getElementById("clonInfo");
+            var clonEffects = document.getElementById("clonEffects");
+            if (clonidine.checked == true) {
+                clonInfo.style.display = "block";
+                clonEffects.style.display = "block";
+            } else {
+                clonInfo.style.display = "none";
+                clonEffects.style.display = "none";
+            }
+            var enalapril = document.getElementById("enalapril");
+            var enaInfo = document.getElementById("enaInfo");
+            var enaEffects = document.getElementById("enaEffects");
+            if (enalapril.checked == true) {
+                enaInfo.style.display = "block";
+                enaEffects.style.display = "block";
+            } else {
+                enaInfo.style.display = "none";
+                enaEffects.style.display = "none";
+            }
+            var loperamide = document.getElementById("loperamide");
+            var lopeInfo = document.getElementById("lopeInfo");
+            var lopeEffects = document.getElementById("lopeEffects");
+            if (loperamide.checked == true) {
+                lopeInfo.style.display = "block";
+                lopeEffects.style.display = "block";
+            } else {
+                lopeInfo.style.display = "none";
+                lopeEffects.style.display = "none";
+            }
+        }
+    </script>
+    <br>
+    <h2>RECOMMENDATIONS</h2>
+    <DIV>
+        <input type="checkbox">X-ray has been discused with patient and oriented<br>
+        <input type="checkbox">MRI has been discused with patient and oriented<br>
+        <input type="checkbox">Echocardiogram has been discused with patient and oriented<br>
+        <input type="checkbox">Prostate u/s has been discused with pt and advice<br>
+        <input type="checkbox">Laboratories has been discused with pt and saved in EMR.///<br>
+        <input type="checkbox">Mamogram has been discused with patient and oriented<br>
+        <input type="checkbox">Patient has been recomended about reduce sodium comsuption less 1500 mg/day.///<br>
+        <input type="checkbox">Pt needs to performance b/p log tid * 10 days was oriented about importance of that information or risk if that information is not colected by him.///<br>
+        <input type="checkbox">Pt needs to performance b/sugar log tid as recomended * 10 days was oriented about importance of that information or risk if that information is not colected by him.///<br>
+        <input type="checkbox">Pt was oreiented about diet and importance about follow medical recomendations.///<br>
+        <input type="checkbox">Pt was oreiented about DO NOT continung skip, dela or discontinue medications and medical orders, was oriented about health risk.///<br>
+        <input type="checkbox">Pt was oreiented about if Mamogram or breast u/s was not discused with you in 30 days pt has responsability to make contac with office.///<br>
+        <input type="checkbox">Warfarin indications and strengh has been upgraded<br>
+        <input type="checkbox">Pt was oreiented about Corona virus covid-19 sings, sympmtos prevention and emergency findins<br>
+        <input type="checkbox">Pt was oreiented about sings or symptoms that indicate Emergency condition related to his/her acute medical coditions. if that happen go directly to EMERGENCY ROOM<br>
+    </DIV>
+</body>
+
+</html>

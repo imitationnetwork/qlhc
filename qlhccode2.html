@@ -1,0 +1,1194 @@
+<html>
+
+<head>
+    <style>
+        .column {
+            float: left;
+            width: 50%;
+            padding: 20px;
+            border: 1px solid;
+        }
+        
+        .row {
+            margin: 10px;
+        }
+    </style>
+
+    <body>
+        <input type="checkbox" id="resCheck" style="float:left;" onchange="myFunction()">Patient with acute respiratory medical condition refer:
+        <p id="text1"></p>
+        <p id="text2"></p>
+        <p id="text3"></p>
+        <p id="text4"></p>
+        <div id="order1list" style="display: none; float: left">
+            <div class="row">
+                <select multiple="true" size=11 class="column" style="display: none; float: left" id="resSelect" onchange="myFunction()">
+                    <option name="symptoms" id="soreThroat" onchange="myFunction()" value="Sore throat">Sore throat</option>
+                    <option name="symptoms" id="earAche" onchange="myFunction()" value="Ear ache">Ear ache</option>
+                    <option name="symptoms" value="Watery eyes">Watery eyes and itchiness</option>
+                    <option name="symptoms" value="Sneezing">Sneezing</option>
+                    <option name="symptoms" value="Fever">Fever</option>
+                    <option name="symptoms" value="Cough">Productive cough with yellow-green phlegm</option>
+                    <option name="symptoms" value="Discomfort">Generalized discomfort</option>
+                    <option name="symptoms" value="Headache">Headache
+                    <option name="symptoms" value="Frontal">Frontal headache</option>
+                    <option name="symptoms" value="Paranasal">Bilateral paranasal ache</option>
+                    <option name="symptoms" value="Respiratory" id="resDiffi">Respiratory difficulty</option>
+                </select>
+                <select multiple="true" size=6 class="column" style="float:right; display:none" id="time" onchange="myFunction()">
+                    <option value="2 days">2 days ago</option>
+                    <option value="4 days">4 days ago</option>
+                    <option value="7 days">7 days ago</option>
+                    <option value="15 days">15 days ago</option>
+                    <option value="1 month">1 month ago</option>
+                    <option value="1 year">1 year ago</option>
+                </select>
+                <select multiple="true" size=8 class="column" style="float:right; display:none" id="bodyPart" onchange="myFunction()">
+                    <option value="Left ear">Left ear
+                    <option value="Right ear">Right ear
+                    <option value="Redness">Redness
+                    <option value="Swelling">Swelling
+                    <option value="External">External membrane pustules
+                    <option value="Intact">Intact timpanic membrane
+                    <option value="Timpanic">timpanic membrane rupture
+                    <option value="Bulging">timpanic membrane bulging, bleeding
+                </select>
+                <select multiple="true" size="2" class="column" style="float:right; display:none" id="breath" onchange="myFunction()">
+                    <option value="Inhale">At inhale
+                    <option value="Exhale">At exhale
+                </select>
+            </div>
+        </div>
+        <script type="application/javascript">
+            function myFunction() {
+                var checkBox = document.getElementById("resCheck");
+                var order1list = document.getElementById("order1list");
+                var sel = document.getElementById("resSelect");
+                var selInd = document.selectedIndex;
+                var medSympt = "";
+                var text1 = document.getElementById("text1");
+                var text2 = document.getElementById("text2");
+                var text3 = document.getElementById("text3");
+                var text4 = document.getElementById("text4");
+                if (checkBox.checked == true) {
+                    sel.style.display = "block";
+                    order1list.style.display = "block";
+                } else {
+                    sel.style.display = "none";
+                    order1list.style.display = "none";
+                }
+                for (var a = 0; a < sel.options.length; a++) {
+                    selInd = sel.options[a];
+                    if (selInd.selected == true) {
+                        if (medSympt.length > 0)
+                            medSympt += "; ";
+                        medSympt += selInd.text;
+                    }
+                }
+                var sThroat = document.getElementById("soreThroat");
+                var time = document.getElementById("time");
+                var tInd = time.selectedIndex;
+                var timeText = "";
+                if (sThroat.selected == true) {
+                    time.style.display = "block";
+                } else {
+                    time.style.display = "none";
+                }
+                for (var b = 0; b < time.options.length; b++) {
+                    tInd = time.options[b];
+                    if (tInd.selected == true) {
+                        if (timeText.length > 0)
+                            timeText += "; ";
+                        timeText += tInd.text;
+                    }
+                }
+                var eAche = document.getElementById("earAche");
+                var bPart = document.getElementById("bodyPart");
+                var bInd = bPart.selectedIndex;
+                var bText = "";
+                if (eAche.selected == true) {
+                    bPart.style.display = "block";
+                } else {
+                    bPart.style.display = "none";
+                }
+                for (var g = 0; g < bPart.options.length; g++) {
+                    bInd = bPart.options[g];
+                    if (bInd.selected == true) {
+                        if (bText.length > 0)
+                            bText += "; ";
+                        bText += bInd.text;
+                    }
+                }
+                var res = document.getElementById("resDiffi");
+                var breath = document.getElementById("breath");
+                var resInd = breath.selectedIndex;
+                var resText = "";
+                if (res.selected == true) {
+                    breath.style.display = "block";
+                } else {
+                    breath.style.display = "none";
+                }
+                for (var f = 0; f < breath.options.length; f++) {
+                    resInd = breath.options[f];
+                    if (resInd.selected == true) {
+                        if (resText.length > 0)
+                            resText += "; ";
+                        resText += resInd.text;
+                    }
+                }
+                text1.innerHTML = "Symptoms: " + medSympt;
+                text2.innerHTML = timeText;
+                text3.innerHTML = bText;
+                text4.innerHTML = resText;
+            }
+
+            function gridView() {
+                var elements = document.getElementsByClassName("column");
+                var i;
+                for (i = 0; i < elements.length; i++) {
+                    elements[i].style.width = "50%";
+                }
+            }
+        </script>
+
+        <input type="checkbox" id="muscCheck" style="float:left;" onchange="myFunction2()">Mus: Pt refer I have been with strong pain on my:
+        <p id="text5"></p>
+        <p id="text6"></p>
+        <p id="text7"></p>
+        <p id="text8"></p>
+
+        <div id="order2list" style="display: none; float: left">
+            <div class="row">
+                <select multiple="true" size=3 class="column" style="float:left; display:none" id="muscSelect" onchange="myFunction2()">
+            <option value="Neck" id="neck" onchange="myFunction2()">UPPER NECK AREA</option>
+            <option value="Middle Back" id="middleBack" onchange="myFunction2()">MIDDLE BACK AREA</option>
+            <option value="Low Back" id="lowBack" onchange="myFunction2()">LOW BACK AREA</option>
+            </select>
+                <select multiple="true" size=5 class="column" style="float:inherit; display:none" id="neckPain" onchange="myFunction2()">
+            <option value="Irradiating to head">Irradiating to head</option>
+            <option value="Right neck increase">Increase at right neck location</option>
+            <option value="Left neck increase">Increase at left neck location</option>
+            <option value="Right Shoulder">Irritation to right shoulder at neck rotation and extension</option>
+            <option value="Left Shoulder">Irritation to left shoulder at neck rotation and extension</option>
+            </select>
+                <select multiple="true" size=10 class="column" style="float:right; display:none" id="pain" onchange="myFunction2()">
+            <option value="lvl10">level 10</option>
+            <option value="lvl9">level 9</option>
+            <option value="lvl8">level 8</option>
+            <option value="lvl7">level 7</option>
+            <option value="lvl6">level 6</option>
+            <option value="lvl5">level 5</option>
+            <option value="lvl4">level 4</option>
+            <option value="lvl3">level 3</option>
+            <option value="lvl2">level 2</option>
+            <option value="lvl1">level 1</option>
+        </select>
+
+                <select multiple="true" class="column" size=5 style="float:inherit; display:none" id="midBackPain" onchange="myFunction2()">
+                <option value="Right back rotation">Pain increase at right back rotation or flexion</option>
+                <option value="Left back rotation">Pain increase at left back rotation or flexion</option>
+        </select>
+                <select multiple="true" class="column" size=10 style="float:right; display:none" id="pain2" onchange="myFunction2()">
+                <option value="lvl10">level 10</option>
+                <option value="lvl9">level 9</option>
+                <option value="lvl8">level 8</option>
+                <option value="lvl7">level 7</option>
+                <option value="lvl6">level 6</option>
+                <option value="lvl5">level 5</option>
+                <option value="lvl4">level 4</option>
+                <option value="lvl3">level 3</option>
+                <option value="lvl2">level 2</option>
+                <option value="lvl1">level 1</option>
+            </select>
+                <select multiple="true" class="column" size=10 style="float:right; display:none" id="lowBackPain" onchange="myFunction2()">
+                <option value="Frontal">Pain increase at frontal inclination</option>
+                <option value="Bending">Pain increase at bending</option>
+                <option value="Right step">Pain increase at right step on right leg area</option>
+                <option value="Left step">Pain increase at left step on left leg area</option>
+                <option value="Blurred vision">Denied any blurred vision</option>
+                <option value="Low limb">Denied any low limbs paralysis</option>
+                <option value="Retention">Denied any urinary or fecal retention or incontenence</option>
+                <option value="Trauma">Denied any trauma</option>
+                <option value="Car accident">Refer secondary to car accident</option>
+                <option value="Weights Home">Refer secondary to lift heavy weights at home</option>
+                <option value="Weights Job">Refer secondary to lift heavy weights at job area</option>
+            </select>
+                <select multiple="true" size=10 class="column" style="float:right; display:none" id="pain3" onchange="myFunction2()">
+                <option value="lvl10">level 10</option>
+                <option value="lvl9">level 9</option>
+                <option value="lvl8">level 8</option>
+                <option value="lvl7">level 7</option>
+                <option value="lvl6">level 6</option>
+                <option value="lvl5">level 5</option>
+                <option value="lvl4">level 4</option>
+                <option value="lvl3">level 3</option>
+                <option value="lvl2">level 2</option>
+                <option value="lvl1">level 1</option>
+        </select>
+            </div>
+        </div>
+
+        <script type="application/javascript">
+            function myFunction2() {
+                var checkBox = document.getElementById("muscCheck");
+                var musc = document.getElementById("muscSelect");
+                var order2list = document.getElementById("order2list");
+                var muscInd = musc.selectedIndex;
+                var muscText = "";
+                var text5 = document.getElementById("text5");
+                var text6 = document.getElementById("text6");
+                var text7 = document.getElementById("text7");
+                var text8 = document.getElementById("text8");
+                if (checkBox.checked == true) {
+                    musc.style.display = "block";
+                    order2list.style.display = "block";
+                } else {
+                    musc.style.display = "none";
+                    order2list.style.display = "none";
+                }
+                for (var i = 0; i < musc.options.length; i++) {
+                    muscInd = musc.options[i];
+                    if (muscInd.selected) {
+                        if (muscText.length > 0)
+                            muscText += ", ";
+                        muscText += muscInd.text;
+                    }
+                }
+                var neck = document.getElementById("neck");
+                var pain = document.getElementById("pain");
+                var pInd = pain.selectedIndex;
+                var painText = "";
+                var nPain = document.getElementById("neckPain");
+                var neckPInd = nPain.selectedIndex;
+                var painAText = "";
+                if (neck.selected == true) {
+                    pain.style.display = "block";
+                    nPain.style.display = "block";
+                } else {
+                    pain.style.display = "none";
+                    nPain.style.display = "none";
+                }
+                for (var h = 0; h < pain.options.length; h++) {
+                    pInd = pain.options[h];
+                    if (pInd.selected) {
+                        if (painText.length > 0)
+                            painText += "; ";
+                        painText += pInd.text;
+
+                    }
+                }
+                for (var l = 0; l < nPain.options.length; l++) {
+                    neckPInd = nPain.options[l];
+                    if (neckPInd.selected) {
+                        if (painAText.length > 0)
+                            painAText += "; ";
+                        painAText += neckPInd.text;
+                    }
+                }
+                var mBack = document.getElementById("middleBack");
+                var pain2 = document.getElementById("pain2");
+                var p2Ind = pain2.selectedIndex;
+                var pain2Text = "";
+                var mBackPain = document.getElementById("midBackPain");
+                var midBackPInd = mBackPain.selectedIndex;
+                var painBText = "";
+                if (mBack.selected == true) {
+                    pain2.style.display = "block";
+                    mBackPain.style.display = "block";
+                } else {
+                    pain2.style.display = "none";
+                    mBackPain.style.display = "none";
+                }
+                for (var j = 0; j < pain2.options.length; j++) {
+                    p2Ind = pain2.options[j];
+                    if (p2Ind.selected) {
+                        if (pain2Text.length > 0)
+                            pain2Text += "; ";
+                        pain2Text += p2Ind.text;
+                    }
+                }
+                for (var m = 0; m < mBackPain.options.length; m++) {
+                    midBackPInd = mBackPain.options[m];
+                    if (midBackPInd.selected) {
+                        if (painBText.length > 0)
+                            painBText += "; ";
+                        painBText += midBackPInd.text;
+                    }
+                }
+                var lBack = document.getElementById("lowBack");
+                var pain3 = document.getElementById("pain3");
+                var p3Ind = pain3.selectedIndex;
+                var pain3Text = "";
+                var lowBack = document.getElementById("lowBackPain");
+                var lBInd = lowBack.selectedIndex;
+                var painCText = "";
+                if (lBack.selected == true) {
+                    pain3.style.display = "block";
+                    lowBack.style.display = "block";
+                } else {
+                    pain3.style.display = "none";
+                    lowBack.style.display = "none";
+                }
+                for (var k = 0; k < pain3.options.length; k++) {
+                    p3Ind = pain3.options[k];
+                    if (p3Ind.selected) {
+                        if (pain3Text.length > 0)
+                            pain3Text += "; ";
+                        pain3Text += p3Ind.text;
+                    }
+                }
+                for (var n = 0; n < lowBack.options.length; n++) {
+                    lBInd = lowBack.options[n];
+                    if (lBInd.selected) {
+                        if (painCText.length > 0)
+                            painCText += "; ";
+                        painCText += lBInd.text;
+                    }
+                }
+                text5.innerHTML = "Symptoms: " + muscText;
+                text6.innerHTML = painAText + " at " + painText;
+                text7.innerHTML = painBText + " at " + pain2Text;
+                text8.innerHTML = painCText + " at " + pain3Text;
+            }
+        </script>
+        <script>
+            function gridView() {
+                var elements = document.getElementsByClassName("column");
+                var i;
+                for (i = 0; i < elements.length; i++) {
+                    elements[i].style.width = "50%";
+                }
+            }
+        </script>
+
+        <input type="checkbox" id="followUp" style="float:left" onchange="myFunction3()">F/U: Pt refer I come today because of my follow up and:
+        <p id="textA"></p>
+        <p id="textB"></p>
+        <div id="order3list" style="display: none; float: left">
+            <div class="row">
+                <select multiple="true" class="column" size=14 style="float:left; display:none" id="examResults" onchange="myFunction3()">
+                    <option value="Physical Exam">Physical Exam</option>
+                    <option value="Re-evaluation">Re-evaluation</option>
+                    <option value="Medication reconciliation">Medication reconciliation</option>
+                    <option value="Medical refill">Medical refill</option>
+                    <option value="Evaluation blood pressure log">Evaluation blood pressure log</option>
+                    <option value="Evaluation sugar level log">Evaluation sugar level log</option>
+                    <option value="School physical exam">School physical exam</option>
+                    <option value="Immigration physical exam">Immigration physical exam</option>
+                    <option value="Lab results">Lab results</option>
+                    <option value="Evaluation for chronic medical conditions">Evaluation for chronic medical conditions</option>
+                    <option value="Evaluation after hospitalization" id="evaHospi" onchange="myFunction3()">Evaluation after hospitalization</option>
+                    <option value="X-ray results">X-ray results</option>
+                    <option value="Echocardiogram results">Echocardiogram results</option>
+                    <option value="MRI results">MRI results</option>
+                    <option value="CT Scan results">CT scan results</option>
+                    <option value="Mammogram results">Mammogram results</option>
+                    <option value="Breasts U.S. results">Breasts U.S. results</option>
+                </select>
+                <select multiple="true" class="column" size=2 style="float:right; display:none" id="docMeds" onchange="myFunction3()">
+                    <option value="Drs gave me new meds">Doctors gave me new meds</option>
+                    <option value="Drs gave me same meds as before">Doctors gave me same meds as before</option>
+                </select>
+            </div>
+        </div>
+        <script type="application/javascript">
+            function myFunction3() {
+                var checkBox = document.getElementById("followUp");
+                var exam = document.getElementById("examResults");
+                var order3list = document.getElementById("order3list");
+                var examInd = exam.selectedIndex;
+                var examText = "";
+                var textA = document.getElementById("textA");
+                if (checkBox.checked == true) {
+                    exam.style.display = "block";
+                    order3list.style.display = "block";
+                } else {
+                    exam.style.display = "none";
+                    order3list.style.display = "none";
+                }
+                for (var i = 0; i < exam.options.length; i++) {
+                    examInd = exam.options[i];
+                    if (examInd.selected) {
+                        if (examText.length > 0)
+                            examText += "; ";
+                        examText += examInd.text;
+                    }
+                }
+                var eva = document.getElementById("evaHospi");
+                var docMeds = document.getElementById("docMeds");
+                var docInd = docMeds.selectedIndex;
+                var docText = "";
+                var textB = document.getElementById("textB");
+                if (eva.selected == true) {
+                    docMeds.style.display = "block";
+                } else {
+                    docMeds.style.display = "none";
+                }
+                for (var j = 0; j < docMeds.options.length; j++) {
+                    docInd = docMeds.options[j];
+                    if (docInd.selected) {
+                        if (docText.length > 0)
+                            docText += "; ";
+                        docText += docInd.text;
+                    }
+                }
+                textA.innerHTML = examText;
+                textB.innerHTML = docText;
+            }
+        </script>
+        <script>
+            function gridView() {
+                var elements = document.getElementsByClassName("column");
+                var i;
+                for (i = 0; i < elements.length; i++) {
+                    elements[i].style.width = "50%";
+                }
+            }
+        </script>
+        <input type="checkbox" id="urinary" style="float:left" onclick="myFunction4()">Urinary: pt refer I have been with urinary issues
+        <p id="textC"></p>
+        <div id="order4list" style="display: none; float: left;">
+            <div class="row">
+                <select multiple="true" size=11 id="symptoms" onchange="myFunction4()">
+                <option value="Fever">Fever</option>
+                <option value="Low back pain">Low back pain</option>
+                <option value="Urine frequency">Urine frequency</option>
+                <option value="Urine intermitent flow">Urine intermitent flow</option>
+                <option value="Nausea">Nausea</option>
+                <option value="Vomiting">Vomiting</option>
+                <option value="Urine bad odor">Urine bad odor</option>
+                <option value="Urine concentrated color and sediment">Urine concentrated color and sediment</option>
+                <option value="2 days ago">2 days ago</option>
+                <option value="4 days ago">4 days ago</option>
+                <option value="1 week ago">1 week ago</option>
+            </select>
+            </div>
+        </div>
+        <script type="application/javascript">
+            function myFunction4() {
+                var urinary = document.getElementById("urinary");
+                var order4list = document.getElementById("order4list");
+                var symptoms = document.getElementById("symptoms");
+                var symInd = symptoms.selectedIndex;
+                var sympText = "";
+                var textC = document.getElementById("textC");
+                if (urinary.checked == true) {
+                    symptoms.style.display = "block";
+                    order4list.style.display = "block";
+                } else {
+                    symptoms.style.display = "none";
+                    order4list.style.display = "none";
+                }
+                for (var i = 0; i < symptoms.options.length; i++) {
+                    symInd = symptoms.options[i];
+                    if (symInd.selected) {
+                        if (sympText.length > 0)
+                            sympText += "; ";
+                        sympText += symInd.text;
+                        textC.innerHTML = sympText;
+                    }
+                }
+            }
+        </script>
+        <script>
+            function gridView() {
+                var elements = document.getElementsByClassName("column");
+                var i;
+                for (i = 0; i < elements.length; i++) {
+                    elements[i].style.width = "50%";
+                }
+            }
+        </script>
+
+        <input type="checkbox" id="digestion" style="float:left;" onchange="myFunction5()">Digestion: Pt refer I feel discomfort on my
+        <p id="demo"></p>
+        <p id="lvlText"></p>
+        <p id="sctTxt"></p>
+        <p id="painCharTxt"></p>
+        <p id="reliefTxt"></p>
+        <p id="aSympTxt"></p>
+        <p id="medConTxt"></p>
+        <div id="order5list" style="display: none; float: left">
+            <div class="row">
+                <select multiple="true" size=12 style="float:left; display:none" id="body" onchange="myFunction5()">
+        <option value="UPPER MID ABDOMEN" id="upMid" onchange="myFunction5()">UPPER MID ABDOMEN</option>
+        <option value="MID ABDOMEN" id="midAb" onchange="myFunction5()">MID ABDOMEN</option>
+        <option value="LOWER MID ABDOMEN" id="lowerMid" onchange="myFunction5()">LOWER MID ABDOMEN</option>
+        <option value="RIGHT UPPER QUADRANT" id="rightUpQ" onchange="myFunction5()">RIGHT UPPER QUADRANT</option>
+        <option value="LEFT UPPER QUADRANT" id="leftUpQ" onchange="myFunction5()">LEFT UPPER QUADRANT</option>
+        <option value="RIGHT LOWER QUADRANT" id="rightLowQ" onchange="myFunction5()">RIGHT LOWER QUADRANT</option>
+        <option value="LEFT LOWER QUADRANT" id="leftLowQ" onchange="myFunction5()">LEFT LOWER QUADRANT</option>
+        <option value="IRRADIATION TO" id="irradiation" onchange="myFunction5()">IRRADIATION TO</option>
+        <option value="PAIN CHARACTERIZED AS" id="painChar" onchange="myFunction5()">PAIN CHARACTERIZED AS</option>
+        <option value="THE PAIN IS RELIEVED" id="painRelief" onchange="myFunction5()">THE PAIN IS RELIEVED</option>
+        <option value="ASSOCIATED SYMPTOMS" id="assoSymp" onchange="myFunction5()">ASSOCIATED SYMPTOMS</option> 
+        <option value="PERSISTENT MEDICAL CONDITIONS" id="medCon" onchange="myFunction5()">W/ PERSISTENT MEDICAL CONDITIONS</option>
+    </select>
+                <select multiple="true" class="column" size=5 id="sections" style="float:left; display:none" onchange="myFunction5()">
+        <option value="RIGHT UPPER CHEST">RIGHT UPPER CHEST</option>
+        <option value="LEFT UPPER CHEST">LEFT UPPER CHEST</option>
+        <option value="RIGHT PELVIC AREA">RIGHT PELVIC AREA</option>
+        <option value="LEFT PELVIC AREA">LEFT PELVIC AREA</option>
+        <option value="BACK AREA">BACK AREA</option>
+    </select>
+                <select multiple="true" class="column" size=5 id="charac" style="float:left; display:none" onchange="myFunction5()">
+        <option value="Stabbing">Stabbing</option>
+        <option value="Dull">Dull</option>
+        <option value="Burning">Burning</option>
+        <option value="Cutting">Cutting</option>
+        <option value="Nagging">Nagging</option>
+    </select>
+                <select multiple="true" class="column" size=5 id="relief" style="float:left; display:none" onchange="myFunction5()">
+        <option value="Facing up">When I rest on bed facing up
+        <option value="Facing down">When I rest on bed facing down
+        <option value="Stand up">When I stand up
+        <option value="Mylanta">With Mylanta
+        <option value="Natural medication">With natural medication
+    </select>
+                <select multiple="true" class="column" size=8 style="float:left; display:none" id="asoSym" onchange="myFunction5()">
+        <option value="Nausea">Nausea
+        <option value="Vomiting">Vomiting
+        <option value="Diarrhea">Diarrhea
+        <option value="Bloody diarrhea">Bloody diarrhea
+        <option value="Mucous">Mucous
+        <option value="Fever">Fever
+        <option value="Dizziness">Dizziness
+        <option value="Loss of consciousness">Loss of consciousness
+    </select>
+                <select multiple="true" class="column" size=5 style="float:left; display:none" id="perMed" onchange="myFunction5()">
+        <option value="Gerd">Gerd
+        <option value="Acid reflux">Acid reflux
+        <option value="Gallbladder stone">Gallbladder stone
+        <option value="Diverticular Dz">Diverticular Dz
+        <option value="Diabetes">Diabetes
+    </select>
+                <select multiple="true" size=10 style="float:left; display:none" id="lvlA" onchange="myFunction5()">
+        <option value="lvl10">level 10
+        <option value="lvl9">level 9
+        <option value="lvl8">level 8
+        <option value="lvl7">level 7
+        <option value="lvl6">level 6
+        <option value="lvl5">level 5
+        <option value="lvl4">level 4
+        <option value="lvl3">level 3
+        <option value="lvl2">level 2
+        <option value="lvl1">level 1
+    </select>
+                <select multiple="true" size=10 style="float:left; display:none" id="lvlB" onchange="myFunction5()">
+        <option value="lvl10">level 10
+        <option value="lvl9">level 9
+        <option value="lvl8">level 8
+        <option value="lvl7">level 7
+        <option value="lvl6">level 6
+        <option value="lvl5">level 5
+        <option value="lvl4">level 4
+        <option value="lvl3">level 3
+        <option value="lvl2">level 2
+        <option value="lvl1">level 1
+    </select>
+                <select multiple="true" size=10 style="float:left; display:none" id="lvlC" onchange="myFunction5()">
+        <option value="lvl10">level 10
+        <option value="lvl9">level 9
+        <option value="lvl8">level 8
+        <option value="lvl7">level 7
+        <option value="lvl6">level 6
+        <option value="lvl5">level 5
+        <option value="lvl4">level 4
+        <option value="lvl3">level 3
+        <option value="lvl2">level 2
+        <option value="lvl1">level 1
+    </select>
+                <select multiple="true" size=10 style="float:left; display:none" id="lvlD" onchange="myFunction5()">
+        <option value="lvl10">level 10
+        <option value="lvl9">level 9
+        <option value="lvl8">level 8
+        <option value="lvl7">level 7
+        <option value="lvl6">level 6
+        <option value="lvl5">level 5
+        <option value="lvl4">level 4
+        <option value="lvl3">level 3
+        <option value="lvl2">level 2
+        <option value="lvl1">level 1
+    </select>
+                <select multiple="true" size=10 style="float:left; display:none" id="lvlE" onchange="myFunction5()">
+        <option value="lvl10">level 10
+        <option value="lvl9">level 9
+        <option value="lvl8">level 8
+        <option value="lvl7">level 7
+        <option value="lvl6">level 6
+        <option value="lvl5">level 5
+        <option value="lvl4">level 4
+        <option value="lvl3">level 3
+        <option value="lvl2">level 2
+        <option value="lvl1">level 1
+    </select>
+                <select multiple="true" size=10 style="float:left; display:none" id="lvlF" onchange="myFunction5()">
+        <option value="lvl10">level 10
+        <option value="lvl9">level 9
+        <option value="lvl8">level 8
+        <option value="lvl7">level 7
+        <option value="lvl6">level 6
+        <option value="lvl5">level 5
+        <option value="lvl4">level 4
+        <option value="lvl3">level 3
+        <option value="lvl2">level 2
+        <option value="lvl1">level 1
+    </select>
+                <select multiple="true" size=10 style="float:left; display:none" id="lvlG" onchange="myFunction5()">
+        <option value="lvl10">level 10
+        <option value="lvl9">level 9
+        <option value="lvl8">level 8
+        <option value="lvl7">level 7
+        <option value="lvl6">level 6
+        <option value="lvl5">level 5
+        <option value="lvl4">level 4
+        <option value="lvl3">level 3
+        <option value="lvl2">level 2
+        <option value="lvl1">level 1
+    </select>
+            </div>
+        </div>
+        <script type="application/javascript">
+            function myFunction5() {
+                var demo = document.getElementById("demo");
+                var lvlText = document.getElementById("lvlText");
+                var sctTxt = document.getElementById("sctTxt");
+                var painCharTxt = document.getElementById("painCharTxt");
+                var reliefTxt = document.getElementById("reliefTxt");
+                var aSympTxt = document.getElementById("aSympTxt");
+                var medConTxt = document.getElementById("medConTxt");
+
+                var digestion = document.getElementById("digestion");
+                var body = document.getElementById("body");
+                var order5list = document.getElementById("order5list");
+                var bodyI = body.selectedIndex;
+                var bodyText = "";
+                if (digestion.checked == true) {
+                    body.style.display = "block";
+                    order5list.style.display = "block";
+                } else {
+                    body.style.display = "none";
+                    order5list.style.display = "none";
+                }
+                for (var i = 0; i < body.options.length; i++) {
+                    bodyI = body.options[i];
+                    if (bodyI.selected) {
+                        if (bodyText.length > 0)
+                            bodyText += "; ";
+                        bodyText += bodyI.text;
+                    }
+                }
+                var upMid = document.getElementById("upMid");
+                var lvlA = document.getElementById("lvlA");
+                var lvlAI = lvlA.selectedIndex;
+                var lvlAText = "";
+                if (upMid.selected == true) {
+                    lvlA.style.display = "block";
+                } else {
+                    lvlA.style.display = "none";
+                }
+                for (var a = 0; a < lvlA.options.length; a++) {
+                    lvlAI = lvlA.options[a];
+                    if (lvlAI.selected == true) {
+                        if (lvlAText.length > 0)
+                            lvlAText += "; ";
+                        lvlAText += lvlAI.text;
+                    }
+                }
+                var midAb = document.getElementById("midAb");
+                var lvlB = document.getElementById("lvlB");
+                var lvlBI = lvlB.selectedIndex;
+                var lvlBText = "";
+                if (midAb.selected == true) {
+                    lvlB.style.display = "block";
+                } else {
+                    lvlB.style.display = "none";
+                }
+                for (var b = 0; b < lvlB.options.length; b++) {
+                    lvlBI = lvlB.options[b];
+                    if (lvlBI.selected) {
+                        if (lvlBText.length > 0)
+                            lvlBText += "; ";
+                        lvlBText += lvlBI.text;
+                    }
+                }
+                var lowerMid = document.getElementById("lowerMid");
+                var lvlC = document.getElementById("lvlC");
+                var lvlCI = lvlC.selectedIndex;
+                var lvlCText = "";
+                if (lowerMid.selected == true) {
+                    lvlC.style.display = "block";
+                } else {
+                    lvlC.style.display = "none";
+                }
+                for (var c = 0; c < lvlC.options.length; c++) {
+                    lvlCI = lvlC.options[c];
+                    if (lvlCI.selected == true) {
+                        if (lvlCText.length > 0)
+                            lvlCText += "; ";
+                        lvlCText += lvlCI.text;
+                    }
+                }
+                var rightUpQ = document.getElementById("rightUpQ");
+                var lvlD = document.getElementById("lvlD");
+                var lvlDI = lvlD.selectedIndex;
+                var lvlDText = "";
+                if (rightUpQ.selected == true) {
+                    lvlD.style.display = "block";
+                } else {
+                    lvlD.style.display = "none";
+                }
+                for (var d = 0; d < lvlD.options.length; d++) {
+                    lvlDI = lvlD.options[d];
+                    if (lvlDI.selected == true) {
+                        if (lvlDText.length > 0)
+                            lvlDText.length += "; ";
+                        lvlDText += lvlDI.text;
+                    }
+                }
+                var leftUpQ = document.getElementById("leftUpQ");
+                var lvlE = document.getElementById("lvlE");
+                var lvlEI = lvlE.selectedIndex;
+                var lvlEText = "";
+                if (leftUpQ.selected == true) {
+                    lvlE.style.display = "block";
+                } else {
+                    lvlE.style.display = "none";
+                }
+                for (var e = 0; e < lvlE.options.length; e++) {
+                    lvlEI = lvlE.options[e];
+                    if (lvlEI.selected == true) {
+                        if (lvlEText.length > 0)
+                            lvlEText.length += "; ";
+                        lvlEText += lvlEI.text;
+                    }
+                }
+                var rightLowQ = document.getElementById("rightLowQ");
+                var lvlF = document.getElementById("lvlF");
+                var lvlFI = lvlF.selectedIndex;
+                var lvlFText = "";
+                if (rightLowQ.selected) {
+                    lvlF.style.display = "block";
+                } else {
+                    lvlF.style.display = "none";
+                }
+                for (var f = 0; f < lvlF.options.length; f++) {
+                    lvlFI = lvlF.options[f];
+                    if (lvlFI.selected == true) {
+                        if (lvlFText.length > 0)
+                            lvlFText.length += "; ";
+                        lvlFText += lvlFI.text;
+                    }
+                }
+                var leftLowQ = document.getElementById("leftLowQ");
+                var lvlG = document.getElementById("lvlG");
+                var lvlGI = lvlG.selectedIndex;
+                var lvlGText = "";
+                if (leftLowQ.selected) {
+                    lvlG.style.display = "block";
+                } else {
+                    lvlG.style.display = "none";
+                }
+                for (var g = 0; g < lvlG.options.length; g++) {
+                    lvlGI = lvlG.options[g];
+                    if (lvlGI.selected == true) {
+                        if (lvlGText.length > 0)
+                            lvlGText.length += "; ";
+                        lvlGText += lvlGI.text;
+                    }
+                }
+                var irra = document.getElementById("irradiation");
+                var sect = document.getElementById("sections");
+                var sectI = sect.selectedIndex;
+                var sectText = "";
+                if (irra.selected == true) {
+                    sect.style.display = "block";
+                } else {
+                    sect.style.display = "none";
+                }
+                for (var rt = 0; rt < sect.options.length; rt++) {
+                    sectI = sect.options[rt];
+                    if (sectI.selected == true) {
+                        if (sectText.length > 0)
+                            sectText.length += ", ";
+                        sectText += sectI.text;
+                    }
+                }
+                var painChar = document.getElementById("painChar");
+                var charac = document.getElementById("charac");
+                var charI = charac.selectedIndex;
+                var charText = "";
+                if (painChar.selected == true) {
+                    charac.style.display = "block";
+                } else {
+                    charac.style.display = "none";
+                }
+                for (var ch = 0; ch < charac.options.length; ch++) {
+                    charI = charac.options[ch];
+                    if (charI.selected == true) {
+                        if (charText.length > 0)
+                            charText.length += "; ";
+                        charText += charI.text;
+                    }
+                }
+                var painRelief = document.getElementById("painRelief");
+                var relief = document.getElementById("relief");
+                var rI = relief.selectedIndex;
+                var prTxt = "";
+                if (painRelief.selected == true) {
+                    relief.style.display = "block";
+                } else {
+                    relief.style.display = "none";
+                }
+                for (pr = 0; pr < relief.options.length; pr++) {
+                    rI = relief.options[pr];
+                    if (rI.selected == true) {
+                        if (prTxt.length > 0)
+                            prTxt += "; ";
+                        prTxt += rI.text;
+                    }
+                }
+
+                var assoSymp = document.getElementById("assoSymp");
+                var asoSym = document.getElementById("asoSym");
+                var assyI = asoSym.selectedIndex;
+                var aSyTxt = "";
+                if (assoSymp.selected == true) {
+                    asoSym.style.display = "block";
+                } else {
+                    asoSym.style.display = "none";
+                }
+                for (var ma = 0; ma < asoSym.options.length; ma++) {
+                    asyI = asoSym.options[ma];
+                    if (asyI.selected == true) {
+                        if (asyTxt.length > 0)
+                            aSyTxt += "; ";
+                        aSyTxt += asyI.text;
+                    }
+                }
+                var medCon = document.getElementById("medCon");
+                var perMed = document.getElementById("perMed");
+                var pMI = perMed.selectedIndex;
+                var medText = "";
+                if (medCon.selected == true) {
+                    perMed.style.display = "block";
+                } else {
+                    perMed.style.display = "none";
+                }
+                for (var pm = 0; pm < perMed.options.length; pm++) {
+                    pMI = perMed.options[pm];
+                    if (pMI.selected == true) {
+                        if (medText.length > 0)
+                            medText.length += "; ";
+                        medText += pMI.text;
+                    }
+                }
+
+                demo.innerHTML = bodyText;
+                lvlText.innerHTML = lvlAText + " " + lvlBText + " " + lvlCText + " " + lvlDText + " " + lvlEText + " " + lvlFText + " " + lvlGText;
+                sctTxt.innerHTML = sectText;
+                painCharTxt.innerHTML = charText;
+                reliefTxt.innerHTML = prTxt;
+                aSympTxt.innerHTML = aSyTxt;
+                medConTxt.innerHTML = medText;
+            }
+        </script>
+        <input type="checkbox" id="chronic" style="float:left" onchange="myFunction6()">Pt w/ previous chronic medical condition
+
+        <p id="coTxt"></p>
+        <p id="htTxt"></p>
+        <p id="hyTxt"></p>
+        <p id="thyTxt"></p>
+        <p id="asTxt"></p>
+        <p id="anTxt"></p>
+        <p id="inTxt"></p>
+        <p id="diaTxt"></p>
+        <p id="gtTxt"></p>
+
+        <select multiple="true" size=9 style="float:left; display:none" onchange="myFunction6()" id="conditions">
+        <option value="hypertension" id="hypertension" onchange="myFunction6()">hypertension
+        <option value="hypercholesterolemia" id="hyper" onchange="myFunction6()">hypercholesterolemia, hyperlipidemia, hypertriglyceridemia
+        <option value="thyroiditis" id="thyroid" onchange="myFunction6()">thyroidthyroiditis
+        <option value="asthma" id="asthma" onchange="myFunction6()">asthma
+        <option value="anemia" id="anemia" onchange="myFunction6()">anemia
+        <option value="insomnia" id="insomnia" onchange="myFunction6()">insomnia
+        <option value="diabetes" id="diabetes" onchange="myFunction6()">diabetes
+        <option value="gout" id="gout" onchange="myFunction6()">gout
+        <option value="migraine">migraine
+    </select>
+        <select multiple="true" size=9 style="float:left; display:none" id="hypertensionLIST" onchange="myFunction6()">
+        <option value="I feel good and my blood pressure is normal">I feel good and my blood pressure is normal
+        <option value="I feel good but I don't check my blood pressure frequently">I feel good but I don't check my blood pressure frequently
+        <option value="I usually forget to take my htn pills; today I didn't use them">I usually forget to take my htn pills; today I didn't use them
+        <option value="It's hard for me to diet and exercise">It's hard for me to diet and exercise
+        <option value="I eat everything">I eat everything
+        <option value="I have been feeling headaches, weakness, and tiredness">I have been feeling headaches, weakness, and tiredness
+        <option value="I have been with my low limbs swelling and painful">I have been with my low limbs swelling and painful
+        <option value="Pt denied chest pain or irradiation to jaw or arm">Pt denied chest pain or irradiation to jaw or arm
+        <option value="Pt denied any symptoms today">Pt denied any symptoms today
+    </select>
+        <select multiple="true" size=5 style="float:left; display:none" id="hyperLIST" onchange="myFunction6()">
+        <option value="I'm using medication and I've been feeling very well">I'm using medication and I've been feeling very well
+        <option value="I don't want to use any medication">I don't want to use any medication
+        <option value="I'd rather use medication than chemical ones">I'd rather not use any medication than chemical ones
+        <option value="I eat a lot and it's hard for me to diet and exercise">I eat a lot and it's hard for me to diet and exercise
+        <option value="I diet and exercise and my levels are always high">I diet and exercise and my levels are always high
+    </select>
+        <select multiple="true" size=10 style="float:left; display:none" id="thyroidLIST" onchange="myFunction6()">
+        <option value="I have been using my medication and I feel good">I have been using my medication and I feel good
+        <option value="I have not done my labs yet">I have not done my labs yet
+        <option value="I have been feeling weak with dry skin, cold temperature">I have been feeling weak with dry skin, cold temperature
+        <option value="I have been sweating, increased temperature, anxious">I have been sweating, increased temperature, anxious
+        <option value="Gaining weight">Gaining weight
+        <option value="Losing weight">Losing weight
+        <option value="I feel some obstruction and difficulty swallowing">I feel some obstruction and difficulty swallowing
+        <option value="I feel moody, sometimes sad and sometimes angry">I feel moody, sometimes sad and sometimes angry
+        <option value="My hair is coming down">My hair is coming down (shedding)
+        <option value="My skin is getting dry">My skin is getting dry
+    </select>
+        <select multiple="true" size=3 style="float:left; display:none" id="asthmaLIST" onchange="myFunction6()">
+        <option value="I need refill of my asthma prescriptions">I need refill of my asthma prescriptions
+        <option value="I have been getting a lot of allergies because of pollen">I have been getting a lot of allergies because of pollen
+        <option value="Respiratory difficulty, nasal congestion, cough">Respiratory difficulty, nasal congestion, cough
+    </select>
+        <select multiple="true" size=4 style="float:left; display:none" id="anemiaLIST" onchange="myFunction6()">
+        <option value="Weakness">Weakness
+        <option value="Pallor on my eyes">Pallor on my eyes
+        <option value="Sleepiness">Sleepiness
+        <option value="Anxiety to eat hair, ice, or dust">Anxiety to eat hair, ice, or dust
+    </select>
+        <select multiple="true" size=5 style="float:left; display:none" id="insomniaLIST" onchange="myFunction6()">
+        <option value="I have problems sleeping">I have problems sleeping
+        <option value="My sleep is really weak; I wake up very easily">My sleep is really weak; I wake up very easily
+        <option value="My brain doesn't get rest">My brain doesn't get rest
+        <option value="I have a lot of stress">I have a lot of stress
+        <option value="I don't want to use any chemical substance">I don't want to use any chemical substance
+    </select>
+        <select multiple="true" size=11 style="float:left; display:none" id="diabetesLIST" onchange="myFunction6()">
+        <option value="I eat everything">I eat everything; it's hard for me to diet
+        <option value="I don't want to use metamorfin as it gives me diarrhea">I don't want to use metamorfin as it gives me diarrhea
+        <option value="I feel tired">I feel tired
+        <option value="I feel weak">I feel weak
+        <option value="I feel my low limbs getting hurt">I feel my low limb getting hurt
+        <option value="I feel my vision is getting hurt">I feel my vision is getting worse
+        <option value="I'm suffering from erectile dysfunction">I'm suffering from erectile dysfunction
+        <option value="I've been using my medication">I've been using my medication
+        <option value="I've been doing my diet as recommended">I've been doing my diet as recommended
+        <option value="I have my blood sugar levels controlled">I have my blood sugar levels controlled
+    </select>
+        <select multiple="true" size=4 style="float:left; display:none" id="goutLIST" onchange="myFunction6()">
+        <option value="I have problems with my diet; I like to eat meat">I have problems with my diet; I like to eat meat
+        <option value="I've not been using my medication">I've not been using my medication
+        <option value="I start to feel sudden pain on my">I start to feel sudden pain on my
+        <option value="It's a chronic medical condition for years">It's a chronic medical condition for years
+    </select>
+
+        <script type="application/javascript">
+            function myFunction6() {
+                var chronic = document.getElementById("chronic");
+                var conditions = document.getElementById("conditions");
+                var conI = conditions.selectedIndex;
+                var condText = "";
+                if (chronic.checked == true) {
+                    conditions.style.display = "block";
+                } else {
+                    conditions.style.display = "none";
+                }
+                for (var i = 0; i < conditions.options.length; i++) {
+                    conI = conditions.options[i];
+                    if (conI.selected == true) {
+                        if (condText.length > 0)
+                            condText += "; ";
+                        condText += conI.text;
+                    }
+                }
+                var hypertension = document.getElementById("hypertension");
+                var hypertensionLIST = document.getElementById("hypertensionLIST");
+                var hypertensionI = hypertensionLIST.selectedIndex;
+                var hypertensionTEXT = "";
+                if (hypertension.selected == true) {
+                    hypertensionLIST.style.display = "block";
+                } else {
+                    hypertensionLIST.style.display = "none";
+                }
+                for (var ht = 0; ht < hypertensionLIST.options.length; ht++) {
+                    hypertensionI = hypertensionLIST.options[ht];
+                    if (hypertensionI.selected) {
+                        if (hypertensionI.length > 0)
+                            hypertensionTEXT += ", ";
+                        hypertensionTEXT += hypertensionI.text;
+                    }
+                }
+                var hyper = document.getElementById("hyper");
+                var hyperLIST = document.getElementById("hyperLIST");
+                var hyI = hyperLIST.selectedIndex;
+                var hyTEXT = "";
+                if (hyper.selected == true) {
+                    hyperLIST.style.display = "block";
+                } else {
+                    hyperLIST.style.display = "none";
+                }
+                for (var hy = 0; hy < hyperLIST.options.length; hy++) {
+                    hyI = hyperLIST.options[hy];
+                    if (hyI.selected == true) {
+                        if (hyTEXT.length > 0)
+                            hyTEXT += "; ";
+                        hyTEXT += hyI.text;
+                    }
+                }
+                var thyroid = document.getElementById("thyroid");
+                var thyroidLIST = document.getElementById("thyroidLIST");
+                var thyI = thyroidLIST.selectedIndex;
+                var thyTEXT = "";
+                if (thyroid.selected == true) {
+                    thyroidLIST.style.display = "block";
+                } else {
+                    thyroidLIST.style.display = "none";
+                }
+                for (var thy = 0; thy < thyroidLIST.options.length; thy++) {
+                    thyI = thyroidLIST.options[thy];
+                    if (thyI.selected) {
+                        if (thyTEXT.length > 0)
+                            thyTEXT += "; ";
+                        thyTEXT += thyI.text;
+                    }
+                }
+                var asthma = document.getElementById("asthma");
+                var asthmaLIST = document.getElementById("asthmaLIST");
+                var astI = asthmaLIST.selectedIndex;
+                var astTEXT = "";
+                if (asthma.selected == true) {
+                    asthmaLIST.style.display = "block";
+                } else {
+                    asthmaLIST.style.display = "none";
+                }
+                for (ast = 0; ast < asthmaLIST.options.length; ast++) {
+                    astI = asthmaLIST.options[ast];
+                    if (astI.selected) {
+                        if (astTEXT.length > 0)
+                            astTEXT += "; ";
+                        astTEXT += astI.text;
+                    }
+                }
+                var anemia = document.getElementById("anemia");
+                var anemiaLIST = document.getElementById("anemiaLIST");
+                var anI = anemiaLIST.selectedIndex;
+                var aneTEXT = "";
+                if (anemia.selected == true) {
+                    anemiaLIST.style.display = "block";
+                } else {
+                    anemiaLIST.style.display = "none";
+                }
+                for (var an = 0; an < anemiaLIST.options.length; an++) {
+                    anI = anemiaLIST.options[an];
+                    if (anI.selected) {
+                        if (aneTEXT.length > 0)
+                            aneTEXT += "; ";
+                        aneTEXT += anI.text;
+                    }
+                }
+                var insomnia = document.getElementById("insomnia");
+                var insomniaLIST = document.getElementById("insomniaLIST");
+                var insI = insomniaLIST.selectedIndex;
+                var insTEXT = "";
+                if (insomnia.selected == true) {
+                    insomniaLIST.style.display = "block";
+                } else {
+                    insomniaLIST.style.display = "none";
+                }
+                for (var ins = 0; ins < insomniaLIST.options.length; ins++) {
+                    insI = insomniaLIST.options[ins];
+                    if (insI.selected) {
+                        if (insTEXT.length > 0)
+                            insTEXT += "; ";
+                        insTEXT += insI.text
+                    }
+                }
+                var diabetes = document.getElementById("diabetes");
+                var diabetesLIST = document.getElementById("diabetesLIST");
+                var diaI = diabetesLIST.selectedIndex;
+                var diaTEXT = "";
+                if (diabetes.selected) {
+                    diabetesLIST.style.display = "block";
+                } else {
+                    diabetesLIST.style.display = "none";
+                }
+                for (var dia = 0; dia < diabetesLIST.options.length; dia++) {
+                    diaI = diabetesLIST.options[dia];
+                    if (diaI.selected) {
+                        if (diaTEXT.length > 0)
+                            diaTEXT += "; ";
+                        diaTEXT += diaI.text;
+                    }
+                }
+                var gout = document.getElementById("gout");
+                var goutLIST = document.getElementById("goutLIST");
+                var goutI = goutLIST.selectedIndex;
+                var goutTEXT = "";
+                if (gout.selected == true) {
+                    goutLIST.style.display = "block";
+                } else {
+                    goutLIST.style.display = "none";
+                }
+                for (var gt = 0; gt < goutLIST.options.length; gt++) {
+                    goutI = goutLIST.options[gt];
+                    if (goutI.selected == true) {
+                        if (goutTEXT.length > 0)
+                            goutTEXT += "; ";
+                        goutTEXT += goutI.text;
+                    }
+                }
+                var coTxt = document.getElementById("coTxt").innerHTML = condText + " ";
+                var htTxt = document.getElementById("htTxt").innerHTML = hypertensionTEXT + " ";
+                var hyTxt = document.getElementById("hyTxt").innerHTML = hyTEXT + " ";
+                var thyTxt = document.getElementById("thyTxt").innerHTML = thyTEXT + " ";
+                var asTxt = document.getElementById("asTxt").innerHTML = astTEXT + " ";
+                var anTxt = document.getElementById("anTxt").innerHTML = aneTEXT + " ";
+                var inTxt = document.getElementById("inTxt").innerHTML = insTEXT + " ";
+                var diaTxt = document.getElementById("diaTxt").innerHTML = diaTEXT + " ";
+                var gtTxt = document.getElementById("gtTxt").innerHTML = goutTEXT + " ";
+            }
+        </script>
+
+        <input type="checkbox" id="psychiatry" onclick="myFunction7()">Psychiatry: Pt refer I have been feeling some
+
+        <p id="psyTxt"></p>
+        <select multiple="true" size=15 style="float:left; display:none" id="psych" onchange="myFunction7()">
+        <option value="crying">Crying
+        <option value="loneliness">Loneliness
+        <option value="anxiety">Anxiety
+        <option value="fear">Fear
+        <option value="lost interest in going out">Lost interest in going out
+        <option value="lost interest in eating">Lost interest in eating
+        <option value="lost interest to go to the bathroom">Lost interest to go to the bathroom
+        <option value="lost interest in sleep">Lost interest in sleep
+        <option value="too much sleep">Too much sleep
+        <option value="Pt denied suicidal or homicidal thoughts at the moment">Pt denied suicidal or homicidal thoughts at the moment
+    </select>
+        <script type="application/javascript">
+            function myFunction7() {
+                var psychiatry = document.getElementById("psychiatry");
+                var psych = document.getElementById("psych");
+                var psychI = psych.selectedIndex;
+                var psychTEXT = "";
+                var psyTxt = document.getElementById("psyTxt");
+                if (psychiatry.checked == true) {
+                    psych.style.display = "block";
+                } else {
+                    psych.style.display = "none";
+                }
+                for (var i = 0; i < psych.options.length; i++) {
+                    psychI = psych.options[i];
+                    if (psychI.selected == true) {
+                        if (psychTEXT.length > 0)
+                            psychTEXT += "; ";
+                        psychTEXT += psychI.text;
+                        psyTxt.innerHTML = psychTEXT;
+                    }
+                }
+            }
+        </script>
+    </body>
+</head>
+
+</html>
